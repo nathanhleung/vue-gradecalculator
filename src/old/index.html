@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google" value="notranslate">
+
+    <title>Final Grade Calculator | Calculate your final grades, GPA weight, and more</title>
+    <meta name='description' content='Use this handy final grade calculator to calculate your final grades (including the minimum you need on the final), and your GPA weight too!'>
+    <meta name='keywords' content='final grade calculator, grades, grade, final grade, calculator, final'>
+    <link rel="canonical" href="http://www.finalgradecalculator.ga/">
+
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/superhero/bootstrap.min.css'>
+    <style>
+      .jumbotron {
+        margin-bottom: 0;
+        min-height: 100vh;
+        background: -webkit-linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://i.imgur.com/F4GRNDa.jpg");
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("https://i.imgur.com/F4GRNDa.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+      #toggleTheme {
+        cursor: pointer;
+      }
+    </style>
+    <link rel='stylesheet' href='./styles.css'>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-67101503-3', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </head>
+  <body ng-app="gradeCalcApp" ng-controller="MainController">
+    <nav class="navbar-fixed-top navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" data-toggle="collapse" data-target="#navbar-content" class="navbar-toggle collapsed"><i class="icon-bar"></i><i class="icon-bar"></i><i class="icon-bar"></i></button><a href="#/" class="navbar-brand">Final Grade Calculator</a>
+        </div>
+        <div id="navbar-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li ng-class="{active: $route.current.active===&quot;calc&quot;}"><a href="#/">Home</a></li>
+            <li ng-class="{active: $route.current.active===&quot;weight&quot;}"><a href="#/weight">GPA Weight Calculator</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li ng-class="{active: $route.current.active===&quot;about&quot;}"><a href="#/about">About</a></li>
+            <li><a id='toggleTheme'>Toggle Themes (beta)</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="jumbotron">
+      <div class="container">
+        <div class='col-sm-9'>
+         <div ng-view="ng-view"></div>
+        </div>
+        <div class='col-sm-3'>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- Final Grade Calculator -->
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-9574386878630311"
+               data-ad-slot="5626448981"
+               data-ad-format="auto"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </div>
+      <div class="container text-center">
+        <br>
+        <br>
+        <span>
+          If you liked this, try <a href='https://xyz.nathanhleung.com/club-utils' class='btn btn-info btn-xs' target="_blank">Club Utils <span class="glyphicon glyphicon-share-alt"></span></span></a>
+        </span>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+    <script>
+      var app = angular.module('gradeCalcApp', ['ngRoute']);
+      app.config(['$routeProvider', function($routeProvider) {
+        $routeProvider.when('/', {
+          templateUrl: './partials/calc.html',
+          controller: 'CalcController',
+          active: 'calc'
+        }).when('/about', {
+          templateUrl: './partials/about.html',
+          controller: 'AboutController',
+          active: 'about'
+        }).when('/weight', {
+          templateUrl: './partials/weight.html',
+          controller: 'WeightController',
+          active: 'weight'
+        }).otherwise({
+          redirectTo: '/'
+        });
+      }]);
+      app.controller('MainController', ['$scope', '$route', function($scope, $route) {
+        $scope.$route = $route;
+      }]);
+      app.controller('AboutController', ['$scope', function($scope) {
+      }]);
+      app.controller('CalcController', ['$scope', function ($scope) {
+          $scope.grades = [];
+          $scope.$watch('grades', function (newGrades, oldGrades) {
+              $scope.multiplier = 1;
+              $scope.sum = 0;
+
+              for (var i = 1; i <= 6; i++) {
+                  if (!newGrades[i]) {
+                      if (i > 4) {
+                          $scope.multiplier -= 0.1;
+                      } else {
+                          $scope.multiplier -= 0.2;
+                      }
+                      $scope.multipler = Math.round($scope.multiplier);
+                  } else {
+                      if (i > 4) {
+                          $scope.sum += newGrades[i] * 0.5;
+                      } else {
+                          $scope.sum += newGrades[i];
+                      }
+                  }
+              }
+
+              $scope.desired = $scope.grades[7];
+
+              $scope.remaining = Math.round((1 - $scope.multiplier) * 100);
+              $scope.average = Math.round(($scope.sum / (5 * $scope.multiplier)) * 100) / 100;
+              if ($scope.remaining === 0) {
+                  $scope.needed = 0;
+              } else {
+                  $scope.needed = Math.round((($scope.desired - ($scope.average * $scope.multiplier)) / (1-$scope.multiplier)) * 100) / 100;
+              }
+
+          }, true);
+      }]);
+      app.controller('WeightController', ['$scope', function($scope) {
+        $scope.year = [];
+        $scope.calc1 = function(classArray, year) {
+          if (classArray[year]) {
+            return Math.round(((classArray[year].honors || 0) * 0.05 + (classArray[year].ap || 0) * 0.1) * 100) / 100;
+          } else {
+            return 0;
+          }
+        };
+        $scope.total = function(classArray) {
+          return Math.round(($scope.calc1(classArray, 1) + $scope.calc1(classArray, 2) + $scope.calc1(classArray, 3) + $scope.calc1(classArray, 4)) * 100) / 100;
+        }
+      }]);
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+    <script>
+      var theme = true;
+      function toggleTheme() {
+        $("link[href='./styles.css']")[0].disabled = theme;
+        theme = !theme;
+      }
+      $('#toggleTheme').click(toggleTheme);
+      toggleTheme(); // initialize page with old theme as default
+    </script>
+  </body>
+</html>
