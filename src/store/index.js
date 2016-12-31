@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import Vuex, { Store } from 'vuex';
+import * as actions from './actions';
+import * as getters from './getters';
+import mutations from './mutations';
 
 Vue.use(Vuex);
 
@@ -8,8 +11,11 @@ const store = new Store({
     sum: 0,
     multiplier: 1,
     grades: [],
-    needed: 90,
+    desiredGrade: 90,
   },
+  actions,
+  getters,
+  mutations,
 });
 
 export default store;

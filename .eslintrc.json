@@ -1,0 +1,13 @@
+{
+  "extends": "airbnb",
+  "plugins": [ "html" ],
+  "settings": {
+    "import/resolver": "webpack"
+  },
+  "rules": {
+    "import/extensions": [2, {
+      "js": "never",
+      "vue": "never"
+    }]
+  }
+}

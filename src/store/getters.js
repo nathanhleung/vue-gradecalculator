@@ -1,3 +1,7 @@
+export function grades(state) {
+  return state.grades;
+}
+
 export function courseCompletion(state) {
   return state.grades.reduce((prev, curr, i) => {
     // prev starts as the initial course completion, 100%
@@ -35,9 +39,9 @@ export function currentAverage(state, getters) {
 export function gradeNeeded(state, getters) {
   const sum = getters.currentSum;
   const completion = getters.courseCompletion;
-  const needed = state.needed;
+  const desiredGrade = state.desiredGrade;
   const remainingCompletion = 1 - completion;
-  const remainingGrade = needed - sum;
+  const remainingGrade = desiredGrade - sum;
   // If we need a 90% on 10% of the course, our remainingGrade will be 9
   // Hence, we divide by remaining completion to get 9 / 0.1 = 9
   return remainingGrade / remainingCompletion;

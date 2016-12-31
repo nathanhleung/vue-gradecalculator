@@ -1,14 +1,14 @@
 <script>
 export default {
   name: 'SettingInput',
-  props: ['label', 'weight']
-}
+  props: ['label', 'initial-weight'],
+};
 </script>
 
 <template>
   <div>
     <label>{{ label }}</label>
-    <input type="number" :placeholder="weight" />
+    <input type="number" :placeholder="initialWeight" />
   </div>
 </template>
 
