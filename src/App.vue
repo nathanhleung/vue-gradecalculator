@@ -1,12 +1,28 @@
-<template>
-  <h1>Hey</h1>
-</template>
-
 <script>
+import AppHeader from './components/AppHeader';
+import GradesForm from './components/GradesForm';
+import SettingsForm from './components/SettingsForm';
+
 export default {
-  name: 'app',
+  name: 'App',
+  components: {
+    AppHeader,
+    GradesForm,
+    SettingsForm,
+  },
 }
 </script>
 
-<style>
+<template>
+  <div :class="$style.App">
+    <app-header />
+    <grades-form />
+    <settings-form />
+  </div>
+</template>
+
+<style module>
+.App {
+  padding: 50px;
+}
 </style>

@@ -7,6 +7,7 @@ const config = {
     filename: 'bundle.js',
   },
   resolve: {
+    extensions: ['', '.js', '.vue'],
     alias: {
       vue: 'vue/dist/vue.js',
     },
@@ -22,6 +23,10 @@ const config = {
         test: /.vue$/,
         loaders: ['vue'],
       },
+      {
+        test: /.css$/,
+        loaders: ['style', 'css'],
+      }
     ],
   },
 };

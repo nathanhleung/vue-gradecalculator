@@ -1,0 +1,26 @@
+<script>
+import SettingInput from './SettingInput';
+
+export default {
+  name: 'SettingsForm',
+  components: {
+    SettingInput,
+  },
+}
+</script>
+
+<template>
+  <div>
+    <h2>Weighting</h2>
+    <p>Please enter percentages (total should be 100)</p>
+    <setting-input label="MP1 Weight" weight="20" />
+    <setting-input label="MP2 Weight" weight="20" />
+    <setting-input label="MP3 Weight" weight="20" />
+    <setting-input label="MP4 Weight" weight="20" />
+    <setting-input label="Midterm Weight" weight="10" />
+    <setting-input label="Final Weight" weight="10" />
+  </div>
+</template>
+
+<style>
+</style>
