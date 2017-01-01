@@ -1,11 +1,14 @@
-# Final Grade Calculator
-Calculate your final grade and what grade you need on the final!
+# Vue Grade Calculator [![dependencies](https://david-dm.org/nathanhleung/vue-gradecalculator.svg)](https://david-dm.org/nathanhleung/vue-gradecalculator)
+Calculate your final grade and the minimum grade you need on the final with Vue 2 and Vuex.
 
-Also you can find GPA weight too (for Wissahickon students).  Have fun!
+Demo: [Vue Grade Calculator](https://xyz.nathanhleung.com/vue-gradecalculator)
 
-Visit it here: [Final Grade Calculator](http://www.finalgradecalculator.ga/)
+![grade calculator screenshot](https://i.imgur.com/Wu8tLXH.png)
 
-![grade calculator screenshot](http://i.imgur.com/3fhWn8b.jpg)
+## Quick Start
+1. `git clone https://github.com/nathanhleung/vue-gradecalculator`
+2. `yarn install`
+3. `yarn webpack`
 
-## Todo
-* vue getter still not working
+## License
+[MIT](https://github.com/nathanhleung/vue-gradecalculator/blob/master/LICENSE)
