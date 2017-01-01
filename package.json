@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "webpack": "webpack",
-    "production": "set NODE_ENV=production && webpack -p && copy index.html build"
+    "production": "set NODE_ENV=production && webpack -p"
   },
   "repository": "https://github.com/nathanhleung/finalgradecalculator",
   "author": "nathanhleung",
