@@ -8,7 +8,7 @@ export default {
 <template>
   <div>
     <label>{{ label }}</label>
-    <input type="number" :placeholder="initialWeight" />
+    <input type="text" :placeholder="initialWeight" />
   </div>
 </template>
 

@@ -17,7 +17,7 @@ export default {
   ]), {
     handleDesiredInput(e) {
       this.changeDesiredGrade({
-        grade: Number(e.target.value),
+        grade: e.target.value,
       });
     },
   }),

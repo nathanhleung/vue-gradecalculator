@@ -1,7 +1,7 @@
 <script>
 import AppHeader from './AppHeader';
 import GradesForm from './GradesForm';
-import GradeNeeded from './GradeNeeded';
+import InfoBox from './InfoBox';
 import SettingsForm from './SettingsForm';
 
 export default {
@@ -9,7 +9,7 @@ export default {
   components: {
     AppHeader,
     GradesForm,
-    GradeNeeded,
+    InfoBox,
     SettingsForm,
   },
 };
@@ -19,7 +19,7 @@ export default {
   <div :class="$style.App">
     <app-header />
     <grades-form />
-    <grade-needed />
+    <info-box />
     <settings-form />
   </div>
 </template>

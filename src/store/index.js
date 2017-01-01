@@ -6,16 +6,25 @@ import mutations from './mutations';
 
 Vue.use(Vuex);
 
-const store = new Store({
+const initialState = {
   state: {
     sum: 0,
     multiplier: 1,
-    grades: [],
+    grades: [
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+    ],
     desiredGrade: 90,
   },
   actions,
   getters,
   mutations,
-});
+};
+
+const store = new Store(initialState);
 
 export default store;

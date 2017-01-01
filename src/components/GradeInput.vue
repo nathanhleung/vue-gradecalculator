@@ -13,7 +13,7 @@ export default {
     handleInput(e) {
       this.changeGrade({
         index: this.index,
-        grade: Number(e.target.value),
+        grade: e.target.value,
       });
     },
   }),
@@ -24,8 +24,7 @@ export default {
   <div>
     <label>{{ label }}</label>
     <input
-      type="number"
-      min="0"
+      type="text"
       :placeholder="label"
       :value="grades[index]"
       @input="handleInput"
