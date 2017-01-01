@@ -32,6 +32,10 @@ export function courseCompletion(state) {
 export function currentAverage(state, getters) {
   // How much of the course has been completed;
   const completion = getters.courseCompletion;
+  // If completion is 0, there are no numbers to add
+  if (completion === 0) {
+    return 0;
+  }
   const weightedSum = state.grades.reduce((prev, curr, i) => {
     if (!isEmpty(curr)) {
       // If it's a midterm or final
@@ -57,4 +61,8 @@ export function gradeNeeded(state, getters) {
     return remainingGrade / remainingCompletion;
   }
   return 0;
+}
+
+export function weights(state) {
+  return state.weights;
 }

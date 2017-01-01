@@ -8,6 +8,9 @@ const mutations = {
   [t.CHANGE_DESIRED_GRADE](state, payload) {
     state.desiredGrade = payload.grade;
   },
+  [t.CHANGE_WEIGHT](state, payload) {
+    state.weights.splice(payload.index, 1, payload.weight);
+  },
 };
 
 export default mutations;

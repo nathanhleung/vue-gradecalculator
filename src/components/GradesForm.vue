@@ -42,6 +42,7 @@ export default {
       label="Fourth Marking Period"
       index="3"
     />
+    <br />
     <grade-input
       label="Midterm Exam"
       index="4"
@@ -50,13 +51,22 @@ export default {
       label="Final Exam"
       index="5"
     />
-    <label>Desired Final Grade</label>
-    <input
-      type="text"
-      min="0"
-      placeholder="Desired Final Grade"
-      :value="desiredGrade"
-      @input="handleDesiredInput"
-    />
+    <div :class="$style.DesiredInputContainer">
+      <label>Desired Final Grade</label>
+      <input
+        type="text"
+        min="0"
+        placeholder="Desired Final Grade"
+        :value="desiredGrade"
+        @input="handleDesiredInput"
+      />
+    </div>
   </div>
 </template>
+
+<style module>
+.DesiredInputContainer {
+  display: inline-block;
+  padding: 10px;
+}
+</style>

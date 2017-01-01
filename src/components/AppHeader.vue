@@ -1,12 +1,20 @@
 <script>
+
 export default {
   name: 'AppHeader',
 };
 </script>
 
 <template>
-  <h1>Final Grade Calculator</h1>
+  <div>
+    <h1 :class="$style.AppHeader">Final Grade Calculator</h1>
+  </div>
 </template>
 
-<style>
+<style module>
+.AppHeader {
+  display: inline-block;
+  font-weight: 400;
+  padding: 10px;
+}
 </style>

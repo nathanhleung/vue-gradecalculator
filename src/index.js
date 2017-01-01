@@ -1,5 +1,6 @@
 // css
 import 'normalize.css';
+import './assets/styles.css';
 
 // js
 import Vue from 'vue';
@@ -18,7 +19,3 @@ new Vue({
   },
   store,
 });
-
-window.getState = () => {
-  return store._vm.state;
-}

@@ -21,7 +21,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div :class="$style.GradeInputContainer">
     <label>{{ label }}</label>
     <input
       type="text"
@@ -32,5 +32,9 @@ export default {
   </div>
 </template>
 
-<style>
+<style module>
+.GradeInputContainer {
+  display: inline-block;
+  padding: 10px;
+}
 </style>

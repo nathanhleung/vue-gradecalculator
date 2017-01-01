@@ -19,6 +19,7 @@ const initialState = {
       undefined,
     ],
     desiredGrade: 90,
+    weights: [20, 20, 20, 20, 10, 10],
   },
   actions,
   getters,

@@ -1,0 +1,17 @@
+html, body {
+  height: 100%;
+}
+label {
+  display: block;
+  font-size: 12px;
+  padding-bottom: 5px;
+}
+input {
+  font-family: Open Sans;
+  padding: 15px;
+  border: 2px solid black;
+  outline: none;
+}
+.clearfix {
+  clear: both;
+}
